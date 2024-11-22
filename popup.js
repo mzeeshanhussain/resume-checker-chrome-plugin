@@ -97,13 +97,20 @@ document.getElementById("analyzeText").addEventListener("click", async () => {
                 body: JSON.stringify({
                     model: "gpt-3.5-turbo",
                     messages: [
-                        { role: "system", content: "You are an ATS system analyzing resumes. Your task is to evaluate the alignment between a resume and a job description and present the findings in a structured and readable format." },
-                        { role: "user", content: `Compare the following resume with the given job description. Analyze the strengths, missing keywords, and suggest improvements. Provide the response in the following format:
+                        {
+                            "role": "system",
+                            "content": "You are an ATS system analyzing resumes. Your task is to evaluate the alignment between a resume and a job description based on keywords, experience, and role-specific requirements. Present your findings in a structured and readable format."
+                        },
+                        {
+                            "role": "user",
+                            "content": `Compare the following resume with the given job description. Analyze the strengths, missing keywords, and suggest improvements. Provide the response in the following format:
                         
-                        1. **Score**: Provide a score out of 100.
-                        2. **Strengths**: Highlight the key strengths of the resume.
-                        3. **Missing Keywords**: List any keywords from the job description missing in the resume.
-                        4. **Suggestions**: Provide actionable suggestions to improve the alignment with the job description.
+                            1. **Score**: Provide a score out of 100 based on keyword matching, experience alignment, and job role requirements.
+                            2. **Strengths**: Highlight the key strengths of the resume (skills, experiences, and alignment with job description).
+                            3. **Missing Keywords**: List any keywords from the job description that are missing in the resume. Pay attention to skills, tools, or qualifications mentioned in the job description.
+                            4. **Suggestions**: Provide actionable suggestions to improve the alignment with the job description. For example, adding missing keywords, rephrasing, or reorganizing content for better clarity.
+                            
+                            Also, consider the importance of the job description's core requirements (e.g., "5+ years experience with Python," "Proven leadership skills," etc.)."
                         
                         Resume:
                         ${data.resumeContent}
