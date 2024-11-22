@@ -97,8 +97,20 @@ document.getElementById("analyzeText").addEventListener("click", async () => {
                 body: JSON.stringify({
                     model: "gpt-3.5-turbo",
                     messages: [
-                        { role: "system", content: "You are an ATS system analyzing resumes." },
-                        { role: "user", content: `Compare this resume:\n${data.resumeContent}\nwith this job description:\n${jobDescription}\nProvide a score out of 100 and suggest improvements.` }
+                        { role: "system", content: "You are an ATS system analyzing resumes. Your task is to evaluate the alignment between a resume and a job description and present the findings in a structured and readable format." },
+                        { role: "user", content: `Compare the following resume with the given job description. Analyze the strengths, missing keywords, and suggest improvements. Provide the response in the following format:
+                        
+                        1. **Score**: Provide a score out of 100.
+                        2. **Strengths**: Highlight the key strengths of the resume.
+                        3. **Missing Keywords**: List any keywords from the job description missing in the resume.
+                        4. **Suggestions**: Provide actionable suggestions to improve the alignment with the job description.
+                        
+                        Resume:
+                        ${data.resumeContent}
+                        
+                        Job Description:
+                        ${jobDescription}
+                        ` }
                     ]
                 })
             });
@@ -125,7 +137,7 @@ document.getElementById("analyzeText").addEventListener("click", async () => {
 function showModal(content) {
     const modal = document.getElementById("resultModal");
     const resultContainer = document.getElementById("analysisResult");
-    resultContainer.textContent = content;
+    resultContainer.innerHTML = formatAnalysis(content);
     modal.style.display = "flex";
 }
 
@@ -133,6 +145,13 @@ function showModal(content) {
 document.getElementById("closeModal").addEventListener("click", () => {
     document.getElementById("resultModal").style.display = "none";
 });
+
+// Format Analysis
+function formatAnalysis(content) {
+    return content
+        .replace(/(?:\*\*([^*]+)\*\*)/g, "<strong>$1</strong>") // Format **bold**
+        .replace(/\n/g, "<br>"); // Convert newlines to <br>
+}
 
 // Restore saved data on popup load
 document.addEventListener("DOMContentLoaded", () => {
@@ -151,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Save job description on input change
     const jobDescriptionInput = document.getElementById("jobDescriptionInput");
     jobDescriptionInput.addEventListener("input", () => {
         saveToStorage({ jobDescription: jobDescriptionInput.value });
