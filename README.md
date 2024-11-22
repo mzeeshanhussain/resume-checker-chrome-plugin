@@ -1,6 +1,6 @@
-# Resume Checker Chrome Extension
+# ResuSync Chrome Extension
 
-The Resume Checker Chrome Extension is a tool designed to help job seekers analyze their resumes in comparison to a job description. This tool uses AI-powered analysis to evaluate how well a resume aligns with a specific job role, providing a score out of 100, highlighting strengths, identifying missing keywords, and offering actionable suggestions for improvement.
+The ResuSync Chrome Extension is a tool designed to help job seekers analyze their resumes in comparison to a job description. This tool uses AI-powered analysis to evaluate how well a resume aligns with a specific job role, providing a score out of 100, highlighting strengths, identifying missing keywords, and offering actionable suggestions for improvement.
 
 ### Features
 
@@ -29,7 +29,7 @@ Your extension should now appear in the list of installed extensions.
 
 ### Step 4: Open the Extension
 1. Click on the Extensions icon (top-right corner of Chrome).
-2. Click on the Resume Checker icon to open the tool in a popup window.
+2. Click on the ResuSync icon to open the tool in a popup window.
 
 ### Step 5: Use the Tool
 1. Upload your resume (PDF) using the "Upload Resume" button.
