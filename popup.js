@@ -59,10 +59,14 @@ document.getElementById("saveApiKey").addEventListener("click", () => {
     if (apiKey) {
         saveToStorage({ apiKey });
         alert("API key saved successfully!");
+        document.getElementById('apiKeyInput').value = '*********'; // Clear input field
+
     } else {
         alert("Please enter a valid API key.");
     }
 });
+
+
 
 // Clear Data
 document.getElementById("clearData").addEventListener("click", () => {

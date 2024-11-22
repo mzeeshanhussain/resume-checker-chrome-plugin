@@ -77,6 +77,16 @@
             color: black;
             text-decoration: none;
         }
+
+        /* Improved form structure */
+        div {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
     </style>
     <script src="libs/pdf.min.js" defer></script>
     <script src="popup.js" defer></script>
@@ -85,26 +95,36 @@
     <h1>Resume Checker</h1>
 
     <!-- Upload Resume Section -->
-    <button id="uploadResume">Upload PDF</button>
-    <input type="file" id="resumeFile" style="display: none;">
+    <div>
+        <button id="uploadResume">Upload Resume in PDF</button>
+        <input type="file" id="resumeFile" style="display: none;">
+    </div>
 
     <!-- Scrollable Container for Resume Content -->
     <div id="resumeContentContainer"></div>
 
     <!-- Enter Job Description -->
-    <label for="jobDescriptionInput">Paste Job Description:</label>
-    <textarea id="jobDescriptionInput" placeholder="Paste the Job Description here..."></textarea>
+    <div id="jdcontaner">
+        <label for="jobDescriptionInput">Paste Job Description:</label>
+        <textarea id="jobDescriptionInput" placeholder="Paste the Job Description here..."></textarea>
+    </div>
 
     <!-- Enter API Key Section -->
-    <label for="apiKeyInput">Enter your ChatGPT API Key:</label>
-    <input type="text" id="apiKeyInput" placeholder="API Key" />
-    <button id="saveApiKey">Save API Key</button>
-
-    <!-- Clear Data Button -->
-    <button id="clearData">Clear Data</button>
+    <div>
+        <label for="apiKeyInput">Enter your ChatGPT API Key:</label>
+        <input type="text" id="apiKeyInput" placeholder="API Key" />
+        <button id="saveApiKey">Save API Key</button>
+    </div>
 
     <!-- Analyze Button -->
-    <button id="analyzeText">Analyze with ChatGPT</button>
+    <div>
+        <button id="analyzeText">Analyze with ChatGPT</button>
+    </div>
+
+    <!-- Clear Data Button -->
+    <div>
+        <button id="clearData">Clear Data</button>
+    </div>
 
     <!-- Modal for Results -->
     <div id="resultModal">
